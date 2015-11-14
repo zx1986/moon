@@ -26,7 +26,7 @@ d3.json('data/world.json', function (err, data) {
   });
 
   // Base globe with blue "water"
-  let blueMaterial = new THREE.MeshPhongMaterial({color: '#2B3B59', transparent: true});
+  let blueMaterial = new THREE.MeshPhongMaterial({color: '#696969', transparent: true});
   let sphere = new THREE.SphereGeometry(200, segments, segments);
   let baseGlobe = new THREE.Mesh(sphere, blueMaterial);
 
@@ -71,31 +71,7 @@ d3.json('data/world.json', function (err, data) {
     var tweenRot = getTween.call(camera, 'rotation', temp.rotation);
     d3.timer(tweenRot);
 
-    buy();
-  }
-
-  function buy() {
-    var content = '<br /><button id="buy" class="ui huge yellow button">Buy it!</button><button id="cancel" class="ui huge grey button">Cancel</button>';
-
-    $("#buyit").html(content);
-    $("#buy").click(to_buy);
-    $("#cancel").click(cancel);
-
-    baseGlobe.removeEventListener('mousemove', onGlobeMousemove);
-    console.log('buy it!');
-  }
-
-  function to_buy() {
-    // your AJAX code here.
-    console.log('got it!');
-  }
-
-  function cancel() {
-    baseGlobe.addEventListener('click', onGlobeClick);
-    baseGlobe.addEventListener('mousemove', onGlobeMousemove);
-    $("#buyit").html("");
-    $("#msg").html("");
-    console.log('cancel it!');
+    buy(temp.uuid);
   }
 
   function onGlobeMousemove(event) {
@@ -130,6 +106,47 @@ d3.json('data/world.json', function (err, data) {
 
   setEvents(camera, [baseGlobe], 'click');
   setEvents(camera, [baseGlobe], 'mousemove', 10);
+
+  // --- start of moon team ---
+
+  function buy(id) {
+    var content = '<br /><button id="buy" class="ui huge yellow button">Buy it!</button><button id="cancel" class="ui huge grey button">Cancel</button>';
+
+    $("#buyit").html(content);
+    $("#cancel").click(cancel);
+
+    if (avaiable(id)) {
+      $("#buy").click({id: id}, to_buy);
+    }
+    else {
+      $("#buy").removeClass("grey").addClass("disabled");
+    }
+
+    baseGlobe.removeEventListener('mousemove', onGlobeMousemove);
+    console.log('buy it!');
+  }
+
+  function to_buy(id) {
+    // your AJAX code here.
+    console.log('got it!');
+  }
+
+  function avaiable(id) {
+    // your AJAX to check if it avaiable
+    console.log('status: ', id);
+    return true;
+  }
+
+  function cancel() {
+    baseGlobe.addEventListener('click', onGlobeClick);
+    baseGlobe.addEventListener('mousemove', onGlobeMousemove);
+    $("#buyit").html("");
+    $("#msg").html("");
+    console.log('cancel it!');
+  }
+
+  // --- end of moon team ---
+
 });
 
 function animate() {
@@ -137,3 +154,4 @@ function animate() {
   renderer.render(scene, camera);
 }
 animate();
+
