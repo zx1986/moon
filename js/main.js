@@ -7,7 +7,7 @@ import topojson from 'topojson';
 import THREE from 'THREE';
 import d3 from 'd3';
 
-d3.json('data/world.json', function (err, data) {
+d3.json('data/moon.json', function (err, data) {
 
   d3.select("#loading").transition().duration(500)
     .style("opacity", 0).remove();
