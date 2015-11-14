@@ -72,7 +72,10 @@ d3.json('data/world.json', function (err, data) {
     var tweenRot = getTween.call(camera, 'rotation', temp.rotation);
     d3.timer(tweenRot);
 
-    buy(temp.uuid);
+    var country = geo.search(latlng[0], latlng[1]);
+    if (country != null) {
+      buy(country.code);
+    }
   }
 
   function onGlobeMousemove(event) {
