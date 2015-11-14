@@ -7,7 +7,7 @@ import topojson from 'topojson';
 import THREE from 'THREE';
 import d3 from 'd3';
 
-d3.json('data/moon.json', function (err, data) {
+d3.json('data/world.json', function (err, data) {
 
   d3.select("#loading").transition().duration(500)
     .style("opacity", 0).remove();
@@ -26,7 +26,8 @@ d3.json('data/moon.json', function (err, data) {
   });
 
   // Base globe with blue "water"
-  let blueMaterial = new THREE.MeshPhongMaterial({color: '#696969', transparent: true});
+  let blueMaterial = new THREE.MeshPhongMaterial();
+  blueMaterial.map = THREE.ImageUtils.loadTexture('img/moon.jpg');
   let sphere = new THREE.SphereGeometry(200, segments, segments);
   let baseGlobe = new THREE.Mesh(sphere, blueMaterial);
 
