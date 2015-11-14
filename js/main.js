@@ -7,7 +7,7 @@ import topojson from 'topojson';
 import THREE from 'THREE';
 import d3 from 'd3';
 
-d3.json('data/world.json', function (err, data) {
+d3.json('data/moon.json', function (err, data) {
 
   d3.select("#loading").transition().duration(500)
     .style("opacity", 0).remove();
@@ -128,11 +128,13 @@ d3.json('data/world.json', function (err, data) {
 
   function to_buy(id) {
     // your AJAX code here.
+    // ....
     console.log('got it!');
   }
 
   function avaiable(id) {
     // your AJAX to check if it avaiable
+    // ....
     console.log('status: ', id);
     return true;
   }
