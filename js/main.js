@@ -140,6 +140,7 @@ d3.json('data/moon.json', function (err, data) {
     // your AJAX to check if it avaiable
     // ....
     console.log('status: ', id);
+    console.log('Test: ', id);
     return true;
   }
 
