@@ -182,8 +182,8 @@ d3.json('data/moon.json', function(err, data) {
         console.log('cancel it!');
     }
 function openWindow(url,name){
-      var w_width=750;                                                                                 //設定開啟視窗的寬度
-      var w_height=550;                                                                                //設定開啟視窗的高度
+      var w_width=410;                                                                                 //設定開啟視窗的寬度
+      var w_height=567;                                                                                //設定開啟視窗的高度
       var x=(screen.width-w_width)/2;                                                           //計算螢幕與開啟視窗的寬度
       var y=(screen.height-w_height)/2;                                                        //計算螢幕與開啟視窗的高度
       var ww='width='+w_width+',height='+w_height+',top='+y+',left='+x;     //將新獲取的設定用字串方式先串起來
