@@ -43,6 +43,7 @@ d3.json('data/moon.json', function (err, data) {
 
   // create a container node and add the two meshes
   var root = new THREE.Object3D();
+  var content = '<button id="buy" class="ui huge yellow button">Buy it!</button><button id="cancel" class="ui huge grey button">Cancel</button><br /><br /><label id="price" style="color:red;font-size:20px;padding:5;">$1 Ethereum</label>';
   root.scale.set(2.5, 2.5, 2.5);
   root.add(baseGlobe);
   root.add(baseMap);
@@ -75,6 +76,9 @@ d3.json('data/moon.json', function (err, data) {
     var country = geo.search(latlng[0], latlng[1]);
     if (country != null) {
       buy(country.code);
+    }else{
+      $("#buyit").html("");
+      baseGlobe.addEventListener('mousemove', onGlobeMousemove);
     }
   }
 
@@ -114,8 +118,7 @@ d3.json('data/moon.json', function (err, data) {
   // --- start of moon team ---
 
   function buy(id) {
-    var content = '<br /><button id="buy" class="ui huge yellow button">Buy it!</button><button id="cancel" class="ui huge grey button">Cancel</button>';
-
+    
     $("#buyit").html(content);
     $("#cancel").click(cancel);
 
@@ -133,6 +136,11 @@ d3.json('data/moon.json', function (err, data) {
   function to_buy(id) {
     // your AJAX code here.
     // ....
+    $("#buy").html("Sold!!");
+    document.getElementById('cancel').style.visibility = 'hidden';
+    //document.getElementById('price').style.visibility = 'hidden';
+    baseGlobe.addEventListener('click', onGlobeClick);
+    baseGlobe.addEventListener('mousemove', onGlobeMousemove);
     console.log('got it!');
   }
 

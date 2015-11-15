@@ -27,7 +27,7 @@
                      5
                   ]
                ],
-               "id":"Point A"
+               "id":"Sea of tranquility"
             },
             {
                "type":"MultiPolygon",
@@ -48,7 +48,7 @@
                      ]
                   ]
                ],
-               "id":"Point B"
+               "id":"Sea of cold"
             },
             {
                "type":"Polygon",
@@ -61,7 +61,7 @@
                      17
                   ]
                ],
-               "id":"Point C"
+               "id":"KEPLER"
             },
             {
                "type":"Polygon",
@@ -74,7 +74,7 @@
                      22
                   ]
                ],
-               "id":"Point D"
+               "id":"BYRGIUS"
             },
             {
                "type":"MultiPolygon",
@@ -109,7 +109,7 @@
                      35
                   ]
                ],
-               "id":"Ali Mountain"
+               "id":"STEVINUS"
             }
          ]
       }
